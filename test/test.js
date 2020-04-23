@@ -10,12 +10,13 @@ var app=new Vue({
     el: "#app",
     data: {
         bookList: bookList,
-        
+
+
     },
     methods: {
         btn: function (book) {
-            console.log(book.name,book.id)
-
+            console.log(book.name,book.id),
+            this.bookList.splice(0,1);
         },
         add:function () {
          this.bookList.push({
