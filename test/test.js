@@ -9,21 +9,19 @@ var bookList = [
 var app=new Vue({
     el: "#app",
     data: {
-        bookList: bookList
+        bookList: bookList,
+        
     },
     methods: {
-        btn: function (bookname) {
-            console.log(bookname)
-            $(function () {
-                var btn1 = document.getElementsByClassName("name");
-                var btn2 = document.getElementsByTagName("tr");
-                var btn3 = $("tr").children().find().eq(2);
-                console.log(btn3);
-                for (one of btn1) {
-                    console.log(one)
-                }
+        btn: function (book) {
+            console.log(book.name,book.id)
 
-            })
+        },
+        add:function () {
+         this.bookList.push({
+             id:5,
+             name:'金瓶梅',
+         })
         }
     }
 });
