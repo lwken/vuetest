@@ -12,7 +12,8 @@ var app=new Vue({
         bookList: bookList
     },
     methods: {
-        btn: function () {
+        btn: function (bookname) {
+            console.log(bookname)
             $(function () {
                 var btn1 = document.getElementsByClassName("name");
                 var btn2 = document.getElementsByTagName("tr");
