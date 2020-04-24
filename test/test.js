@@ -14,9 +14,9 @@ var app=new Vue({
 
     },
     methods: {
-        btn: function (book) {
-            console.log(book.name,book.id),
-            this.bookList.splice(0,1);
+        btn: function (book,index) {
+            console.log(book.name,book.id);
+            this.bookList.splice(index,1);
         },
         add:function () {
          this.bookList.push({
