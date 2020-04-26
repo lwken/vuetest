@@ -26,9 +26,9 @@ var app=new Vue({
     el: "#app",
     data: {
         bookList: bookList,
-        msg:""
+        msg:"",
 
-
+        dialogVisible: true,
     },
     methods: {
         btn: function (book,index) {
@@ -54,6 +54,13 @@ var app=new Vue({
                 book.flag=false
             
       },
+        handleClose(done) {
+            this.$confirm('确认关闭？')
+                .then(_ => {
+                    // done();
+                })
+                .catch(_ => {});
+        }        
 
   },
 
