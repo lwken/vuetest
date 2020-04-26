@@ -1,3 +1,19 @@
+export default {
+    data() {
+        return {
+            dialogVisible: false
+        };
+    },
+    methods: {
+        handleClose(done) {
+            this.$confirm('确认关闭？')
+                .then(_ => {
+                    done();
+                })
+                .catch(_ => {});
+        }
+    }
+};
 
 var bookList = [
     { id: 1, name: '三国演义' },
@@ -37,8 +53,11 @@ var app=new Vue({
                 console.log("失去焦点")
                 book.flag=false
             
-      }
-  }
+      },
+
+  },
+
+
 });
 
 
