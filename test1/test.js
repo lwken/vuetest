@@ -13,7 +13,7 @@ var app=new Vue({
         bookList: bookList,
         msg:"",
 
-        // dialogVisible: false,
+        dialogVisible: false,
     },
     methods: {
         btn: function (book,index) {

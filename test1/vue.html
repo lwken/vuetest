@@ -13,7 +13,7 @@
     <table>
         <tr v-for="(book,index) in bookList">
             <td >
-               <el-button type="text" @click="btn1(book)">{{book.id}}</el-button>
+               <el-button type="text" @click="dialogVisible = true">{{book.id}}</el-button>
                 <el-dialog
                         title="修改信息"
                         :visible.sync="dialogVisible"
@@ -31,7 +31,7 @@
             </td>
             <td class="name">
 
-            <el-button type="text" @click="btn1(book)">{{book.name}}</el-button>
+            <el-button type="text" @click="dialogVisible = true">{{book.name}}</el-button>
                 <el-dialog
                         title="修改信息"
                         :visible.sync="dialogVisible"
