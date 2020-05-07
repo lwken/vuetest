@@ -10,14 +10,14 @@
 <div id="app">
     
     <el-button type="danger" @click="add">新增</el-button>
-    <table >
+    <table>
         <tr v-for="(book,index) in bookList">
             <td >
-               <el-button type="text" @click="dialogVisible = true">{{book.id}}</el-button>
+               <el-button type="text" @click="btn1(book)">{{book.id}}</el-button>
                 <el-dialog
-                        tittle="修改信息"
+                        title="修改信息"
                         :visible.sync="dialogVisible"
-                        width="30%"
+                         width="30%"
                         :before-close="handleClose">
                     <div>
                         <input type="text" name=""  v-model="book.id" @blur="btn2(book)">
@@ -31,17 +31,27 @@
             </td>
             <td class="name">
 
-            <span v-if="!book.flag">{{book.name}}</span>
-            <div v-if="book.flag" >
-            <input type="text" name=""  v-model="book.name" @blur="btn2(book)" >
+            <el-button type="text" @click="btn1(book)">{{book.name}}</el-button>
+                <el-dialog
+                        title="修改信息"
+                        :visible.sync="dialogVisible"
+                        width="30%"
+                        :before-close="handleClose">
+                    <div>
+                        <input type="text" name=""  v-model="book.name" @blur="btn2(book)">
+                    </div>
+                    <span slot="footer" class="dialog-footer">
+                         <el-button @click="dialogVisible = false">取 消</el-button>
+                         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                    </span>
+                </el-dialog>
 
-            </div>
             </td>
-            <td>
-                <el-button type="primary" @click="btn(book,index)" size="small">主要按钮</el-button>
-                <el-button @click="btn1(book)" size="small">编辑</el-button>
-                <el-button @click="handleClose(book)" size="small">测试</el-button>
-            </td>
+<!--            <td>-->
+<!--                <el-button type="primary" @click="btn(book,index)" size="small">主要按钮</el-button>-->
+<!--                <el-button @click="btn1(book)" size="small">编辑</el-button>-->
+<!--                <el-button @click="handleClose(book)" size="small">测试</el-button>-->
+<!--            </td>-->
         </tr>
     </table>
 </div>

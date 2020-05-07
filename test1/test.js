@@ -1,19 +1,4 @@
-export default {
-    data() {
-        return {
-            dialogVisible: false
-        };
-    },
-    methods: {
-        handleClose(done) {
-            this.$confirm('确认关闭？')
-                .then(_ => {
-                    done();
-                })
-                .catch(_ => {});
-        }
-    }
-};
+
 
 var bookList = [
     { id: 1, name: '三国演义' },
@@ -28,7 +13,7 @@ var app=new Vue({
         bookList: bookList,
         msg:"",
 
-        dialogVisible: true,
+        // dialogVisible: false,
     },
     methods: {
         btn: function (book,index) {
@@ -42,11 +27,11 @@ var app=new Vue({
          })
         },
         btn1:function(book){
-            if ( book.flagname == undefined ) {
-                this.$set(book, 'flag', false)
+            if ( book.dialogVisible == undefined ) {
+                this.$set(book, 'dialogVisible', false)
             }
 
-                book.flag=true;
+                book.dialogVisible=true;
                 console.log(book)
       },
       btn2:function(book){
@@ -57,7 +42,7 @@ var app=new Vue({
         handleClose(done) {
             this.$confirm('确认关闭？')
                 .then(_ => {
-                    // done();
+                     done();
                 })
                 .catch(_ => {});
         }        
