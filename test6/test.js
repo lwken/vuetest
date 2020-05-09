@@ -1,5 +1,4 @@
 
-
 var bookList = [
     { id: 1, name: '三国演义' },
     { id: 2, name: '水浒传'},
@@ -11,9 +10,9 @@ var app=new Vue({
     el: "#app",
     data: {
         bookList: bookList,
-        msg:"",
+        msg:""
 
-        dialogVisible: false,
+
     },
     methods: {
         btn: function (book,index) {
@@ -35,21 +34,11 @@ var app=new Vue({
                 console.log(book)
       },
       btn2:function(book){
-
+                console.log("失去焦点")
                 book.flag=false
             
-      },
-        handleClose(done) {
-            this.$confirm('确认关闭？')
-                .then(_ => {
-                     done();
-                })
-                .catch(_ => {});
-        }        
-
-  },
-
-
+      }
+  }
 });
 
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单渲染</title>
+    <link rel="stylesheet" type="text/css" href="new.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+    
+    <input type="button" value="新增" @click="add">
+    <table >
+        <tr v-for="(book,index) in bookList">
+            <td >
+               <span v-if="!book.flag" >{{book.id}}</span> 
+               <div v-if="book.flag" @blur="btn2(book)">
+               <input type="text" name=""  v-model="book.id" @blur="btn2(book)">
+
+               </div>
+            </td>
+            <td class="name">
+                
+            <span v-if="!book.flag">{{book.name}}</span>
+            <div v-if="book.flag" >
+            <input type="text" name=""  v-model="book.name" @blur="btn2(book)" >
+
+            </div>
+            </td>
+            <td>
+                <input type="button" value="index" @click="btn(book,index)">
+                <el-button @click="btn1(book)" size="small">编辑</el-button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+ <script src="vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="vue-router.js"></script>
+<script src="jquery-3.5.0.min.js"></script>
+ <script src="test.js"></script>
+</body>
+</html>
