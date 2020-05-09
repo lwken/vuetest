@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./element.css">
+</head>
+<body>
+
+<div id="app">
+	<el-button @click="add()">新增</el-button>
+
+    <el-table :data="bookList" border style="width: 50%;">
+      	<el-table-column prop="id" label="id"></el-table-column>
+
+      	<el-table-column prop="name" label="书名"></el-table-column>
+
+      	<el-table-column label="操作">
+      		<template slot-scope="scope">
+      			<el-button @click="edit( scope.row )">编辑</el-button>
+      		</template>
+      	</el-table-column>
+    </el-table>	
+
+	<el-dialog :title="dialog.title" :visible.sync="dialog.show">
+		<div>
+			<label>书名: </label>
+			<el-input v-model="form.name"></el-input>
+		</div>
+
+		<div>
+  			<el-button @click="save()">保存</el-button>
+		</div>
+	</el-dialog>    
+</div>
+
+</body>
+</html>
+
+<script type="text/javascript" src="./vue.js"></script>
+<script type="text/javascript" src="./element.js"></script>
+<script type="text/javascript">
+	var bookList = [
+	    { id: 1, name: '三国演义' },
+	    { id: 2, name: '水浒传'},
+	    { id: 3, name: '红楼梦'},
+	    { id: 4, name: '西游记'},
+	]
+
+	new Vue({
+		el: '#app',
+		data: {
+			bookList: bookList,
+			dialog: {
+				title: '',
+				show: false,
+			},
+			form: {
+				id: 0,
+				name: '',
+			}
+		},
+
+		methods: {
+			add: function() {
+				// 打开窗口
+				this.form.id = 0
+				this.form.name = ''
+
+				this.dialog.title = '新增'
+				this.dialog.show = true
+			},
+
+			edit: function( book ) {
+				this.form.id = book.id
+				this.form.name = book.name
+
+				this.dialog.title = '编辑'
+				this.dialog.show = true
+			},
+
+			save: function() {
+				if ( this.form.id ) {
+					// 编辑
+					var book = {}
+					for (var i = 0; i < this.bookList.length; i++) {
+						if ( this.bookList[i].id == this.form.id ) {
+							book = this.bookList[i]
+						}
+					}
+					book.name = this.form.name
+				}
+				else {
+					// 保存
+					var data = {
+						id: 5,
+						name: this.form.name,
+					}
+					this.bookList.push( data )
+				}
+
+				// 关闭窗口
+				this.dialog.show = false
+			}
+		}
+
+	})
+
+
+</script>
