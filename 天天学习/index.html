@@ -11,10 +11,18 @@
 
 <script type="text/javascript">
 // 1: 先学this
-
+console.log(this)  //this指的是window
 // 1.1: 直接打印 this ,看看是个什么东西
 // 1.2: 声明一个对象, 在其属性定义一个函数属性, 并在里面打印this看看是什么情况
+var a={
+	b:1,
+	func:function(){
+		console.log(this) //this指的是a
+	}
 
+
+}
+a.func();
 
 
 </script>
