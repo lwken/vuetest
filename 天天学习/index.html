@@ -27,6 +27,22 @@ var a={
 a.func();
 
 // 1.3 声明一个新对象, 在其属性定义一个函数属性, 并在函数内部调用a.func
+var c={
+	fn:function () {
+       a.func();  //先当于这个是全局的可以调用
+       console.log(this);
 
+	}
+}
+c.fn()
 
+	var d={
+	fn1:function () {
+      var fn2=function () {
+             alert(this)
+	  }
+	  fn2();   //先当于这个作用域是局部的，只能内部调用
+	}
+	}
+	d.fn1();
 </script>
