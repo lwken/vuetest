@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>Vue</title>
+    <link rel="stylesheet" type="text/css" href="new.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+<body>
+<div id="app" >
+    <div id="top" >
+        <h1>网页下拉一段后固定导航条</h1>
+    </div>
+    <div id="nav">
+    <el-container class="topMenu" >
+                  <el-header  type="danger">
+                      <ul class="topPage">
+                              <li id="firstPage"><a href="">首页</a></li>
+                              <li id="work"><a href="#ex"> 工作经历</a></li>
+                              <li id="project"><a href="#pro">项目经历</a></li>
+                              <li id="education"><a href="">教育经历</a></li>
+                              <li id="lang"><a href="">语言能力</a></li>
+                              <li id="tel"><a href="">联系方式</a></li>
+                          </ul>
+                  </el-header>
+    </el-container>
+    </div>
+
+    <el-container class="main">
+                  <el-main  >
+                      <div class="jd">
+                          <h3>姓名</h3>
+                          <article>文学爱好者、较好的文字组织能力、精通英语、能阅读日语文章
+                              对待工作认真负责，善于沟通、协调有较强的组织能力与团队精神；
+                              活泼开朗、乐观上进、有爱心并善于施教并行；上进心强、勤于学习
+                              能不断提高自身的能力与综合素质。能熟练运用电脑，精通office办
+                              公软件，已熟悉和掌握本专业的相关知识，善于总结归纳，善于沟通，
+                              有良好的敬业作风和团队合作精神。 经过五年多扎实的工作经验，现
+                              已能够独立造作整个项目流程。工作踏实、细致、认真。具有较好的
+                              文字组织能力，精通英语，能阅读日语文章。
+                          </article>
+                      </div>
+                  </el-main>
+    </el-container>
+    <el-container id="pro">
+        <el-main>
+            <template>
+                <el-carousel :interval="4000" type="card" height="600px" width="600px">
+                    <el-carousel-item v-for="item in list" :key="item.index" :label="item.id">
+                        <img :src="item.url">
+                    </el-carousel-item>
+                </el-carousel>
+            </template>
+        </el-main>
+    </el-container>
+    <el-container class="timeLine" id="ex">
+        <el-main>
+            <div class="block">
+                <div class="radio">
+                    <div class="radio1">
+                    排序：
+                    <el-radio-group v-model="reverse">
+                        <el-radio :label="true">倒序</el-radio>
+                        <el-radio :label="false">正序</el-radio>
+
+                    </el-radio-group>
+                    </div>
+                    <el-timeline :reverse="reverse" >
+                        <el-timeline-item
+                                v-for="(activity,index) in activities"
+                                :key="index"
+                                :icon="activity.icon"
+                                :color="activity.color"
+                                :type="activity.type"
+                                :size="activity.size"
+                                :timestamp="activity.timestamp">
+                            <el-card>
+                                <h4>{{activity.top}}</h4>
+                                <p>{{activity.text}}</p>
+
+                            </el-card>
+                            {{activity.content}}
+                        </el-timeline-item>
+                    </el-timeline>
+                </div>
+            </div>
+        </el-main>
+    </el-container>
+</div>
+<script src="vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="new.js"></script>
+</body>
+</html>
